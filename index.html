@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कमल बहादुर श्रेष्ठको अभियान प्रस्तुति</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .slide-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+        }
+
+        .slide-wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: slideIn 0.6s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: slideDown 0.8s ease-out 0.1s both;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide p {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.2s both;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-number {
+            font-size: 1.1em;
+            margin-top: 20px;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 40px;
+            background: #f8f9fa;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .slide-indicator {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .slide-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .slide-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .slide-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .slide-5 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .slide-6 {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .slide-7 {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .slide-8 {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);
+        }
+
+        .slide-9 {
+            background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%);
+        }
+
+        .slide-10 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .slide-11 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .slide-12 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .slide-13 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .slide-14 {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .slide-15 {
+            background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%);
+        }
+
+        .play-button {
+            background: #10b981 !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4) !important;
+        }
+
+        .play-button:hover {
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6) !important;
+        }
+
+        .pause-button {
+            background: #ef4444 !important;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4) !important;
+        }
+
+        .pause-button:hover {
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6) !important;
+        }
+
+        @media (max-width: 768px) {
+            .slide h1 {
+                font-size: 2em;
+            }
+            .slide h2 {
+                font-size: 1.8em;
+            }
+            .slide p {
+                font-size: 1em;
+            }
+            .icon {
+                font-size: 2.5em;
+            }
+            .controls {
+                padding: 15px 20px;
+            }
+            button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+
+        <div class="slide-container">
+            <div class="slide-wrapper">
+                <!-- Slide 1: परिचय -->
+                <div class="slide slide-1 active">
+                    <div class="slide-content">
+                        <div class="icon">👤</div>
+                        <h1>कमल बहादुर श्रेष्ठ</h1>
+                        <p>केरावारी गाउँपालिका</p>
+                        <p style="font-size: 1.5em; margin-top: 20px;">📋 २०८४ चुनाव</p>
+                        <div class="slide-number">स्लाइड 1 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: मूल सोच -->
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        <div class="icon">💭</div>
+                        <h2>मूल सोच</h2>
+                        <p>भाषण होइन, कार्यान्वयन</p>
+                        <p>विकास योजना - १४ बिन्दु</p>
+                        <div class="slide-number">स्लाइड 2 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 3: समस्या र समाधान -->
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        <div class="icon">🎯</div>
+                        <h2>समस्या र समाधान</h2>
+                        <p>लामो योजना को सरल र आकर्षक प्रस्तुति</p>
+                        <p>यो इन्टरेक्टिव प्रेजेन्टेशन</p>
+                        <div class="slide-number">स्लाइड 3 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4: सुशासन -->
+                <div class="slide slide-4">
+                    <div class="slide-content">
+                        <div class="icon">⚖️</div>
+                        <h2>सुशासन</h2>
+                        <p>पारदर्शी र जवाफदेही शासन</p>
+                        <p>सबैको लागि समान अधिकार</p>
+                        <div class="slide-number">स्लाइड 4 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 5: रोजगारी -->
+                <div class="slide slide-5">
+                    <div class="slide-content">
+                        <div class="icon">💼</div>
+                        <h2>रोजगारी</h2>
+                        <p>स्थानीय अर्थतन्त्र को विकास</p>
+                        <p>हरेक परिवारको लागि आजीविका</p>
+                        <div class="slide-number">स्लाइड 5 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 6: कृषि -->
+                <div class="slide slide-6">
+                    <div class="slide-content">
+                        <div class="icon">🌾</div>
+                        <h2>कृषि</h2>
+                        <p>किसान को आम्दानी दोब्बर</p>
+                        <p>आधुनिक कृषि विधि को प्रशिक्षण</p>
+                        <div class="slide-number">स्लाइड 6 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 7: युवा -->
+                <div class="slide slide-7">
+                    <div class="slide-content">
+                        <div class="icon">👨‍🎓</div>
+                        <h2>युवा</h2>
+                        <p>रोजगारीको अवसर र प्रशिक्षण</p>
+                        <p>तरुणलाई आत्मनिर्भर बनाउन</p>
+                        <div class="slide-number">स्लाइड 7 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 8: शिक्षा -->
+                <div class="slide slide-8">
+                    <div class="slide-content">
+                        <div class="icon">📚</div>
+                        <h2>शिक्षा</h2>
+                        <p>गुणस्तरीय शिक्षा सबैको लागि</p>
+                        <p>स्कूल र कोचिङ को सुविधा</p>
+                        <div class="slide-number">स्लाइड 8 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 9: स्वास्थ्य -->
+                <div class="slide slide-9">
+                    <div class="slide-content">
+                        <div class="icon">🏥</div>
+                        <h2>स्वास्थ्य</h2>
+                        <p>सुलभ र गुणस्तरीय स्वास्थ्य सेवा</p>
+                        <p>सबैको लागि चिकित्सा सहायता</p>
+                        <div class="slide-number">स्लाइड 9 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 10: पूर्वाधार -->
+                <div class="slide slide-10">
+                    <div class="slide-content">
+                        <div class="icon">🛣️</div>
+                        <h2>पूर्वाधार</h2>
+                        <p>सडक, पानी, विद्युत को विकास</p>
+                        <p>आधुनिक सुविधा सबै गाउँमा</p>
+                        <div class="slide-number">स्लाइड 10 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 11: खानेपानी -->
+                <div class="slide slide-11">
+                    <div class="slide-content">
+                        <div class="icon">💧</div>
+                        <h2>खानेपानी</h2>
+                        <p>स्वच्छ पानीको आपूर्ति</p>
+                        <p>हरेक घरमा पानीको सुविधा</p>
+                        <div class="slide-number">स्लाइड 11 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 12: पर्यटन -->
+                <div class="slide slide-12">
+                    <div class="slide-content">
+                        <div class="icon">🏔️</div>
+                        <h2>पर्यटन</h2>
+                        <p>स्थानीय सङ्स्कृति को संरक्षण</p>
+                        <p>पर्यटन को माध्यमले आय</p>
+                        <div class="slide-number">स्लाइड 12 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 13: डिजिटल -->
+                <div class="slide slide-13">
+                    <div class="slide-content">
+                        <div class="icon">💻</div>
+                        <h2>डिजिटल सेवा</h2>
+                        <p>आधुनिक प्रविधी को प्रयोग</p>
+                        <p>सबैको लागि डिजिटल सेवा</p>
+                        <div class="slide-number">स्लाइड 13 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 14: समावेशीकरण -->
+                <div class="slide slide-14">
+                    <div class="slide-content">
+                        <div class="icon">👩‍👨‍👧‍👦</div>
+                        <h2>समावेशीकरण</h2>
+                        <p>महिला र सामाजिक न्याय</p>
+                        <p>सबैको लागि बराबरको हक</p>
+                        <div class="slide-number">स्लाइड 14 / 15</div>
+                    </div>
+                </div>
+
+                <!-- Slide 15: अन्तिम अपील -->
+                <div class="slide slide-15">
+                    <div class="slide-content">
+                        <div class="icon">🗳️</div>
+                        <h1>कमल बहादुर श्रेष्ठलाई</h1>
+                        <h1>वोट दिनुहोस्!</h1>
+                        <p style="font-size: 1.3em; margin-top: 30px;">केरावारी गाउँपालिकाको विकासको लागि</p>
+                        <p style="font-size: 1.2em; margin-top: 20px;">📋 २०८४ चुनाव</p>
+                        <div class="slide-number">स्लाइड 15 / 15</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="previousSlide()">← अघिल्लो</button>
+            <div class="slide-indicator">
+                <span id="currentSlide">1</span> / 15
+            </div>
+            <button id="playPauseBtn" class="play-button" onclick="toggleAutoPlay()">▶️ स्वचालित खेल</button>
+            <div class="slide-indicator" style="min-width: 200px;">⏱️ <span id="timerDisplay">9:00</span></div>
+            <button onclick="nextSlide()">अगाडि →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 15;
+        let autoPlayActive = false;
+        let autoPlayInterval;
+        const secondsPerSlide = 36; // 540 seconds / 15 slides = 36 seconds per slide
+        let autoPlayTimer = 0;
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlide = 1;
+            if (n < 1) currentSlide = totalSlides;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide - 1].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide;
+            updateProgressBar();
+            
+            // Auto scroll to slide (for mobile)
+            document.querySelector('.slide-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+            if (autoPlayActive) autoPlayTimer = 0;
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+            if (autoPlayActive) autoPlayTimer = 0;
+        }
+
+        function toggleAutoPlay() {
+            const btn = document.getElementById('playPauseBtn');
+            autoPlayActive = !autoPlayActive;
+            
+            if (autoPlayActive) {
+                btn.textContent = '⏸️ अचेज गर्नुहोस्';
+                btn.classList.remove('play-button');
+                btn.classList.add('pause-button');
+                autoPlayTimer = 0;
+                startAutoPlay();
+            } else {
+                btn.textContent = '▶️ स्वचालित खेल';
+                btn.classList.remove('pause-button');
+                btn.classList.add('play-button');
+                clearInterval(autoPlayInterval);
+            }
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                autoPlayTimer++;
+                updateTimerDisplay();
+                
+                if (autoPlayTimer >= secondsPerSlide) {
+                    autoPlayTimer = 0;
+                    nextSlide();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const totalSeconds = (totalSlides - currentSlide) * secondsPerSlide + (secondsPerSlide - autoPlayTimer);
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = totalSeconds % 60;
+            document.getElementById('timerDisplay').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function updateProgressBar() {
+            const progress = (currentSlide / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoPlay();
+            }
+        });
+
+        // Initialize
+        showSlide(currentSlide);
+        updateTimerDisplay();
+    </script>
+</body>
+</html>
